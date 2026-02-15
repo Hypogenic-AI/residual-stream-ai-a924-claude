@@ -1,0 +1,127 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{park2023linear}
+\citation{marks2024geometry}
+\citation{arditi2024refusal}
+\citation{panickssery2024steering}
+\citation{konen2024style}
+\citation{hc3dataset}
+\citation{qwen2025qwen}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\newlabel{sec:intro}{{1}{1}{Introduction}{section.1}{}}
+\citation{park2023linear}
+\citation{park2023linear}
+\citation{marks2024geometry}
+\citation{arditi2024refusal}
+\citation{panickssery2024steering}
+\citation{konen2024style}
+\citation{lai2024style}
+\citation{turner2023activation}
+\citation{zou2023representation}
+\citation{panickssery2024steering}
+\citation{marks2024geometry}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{2}{section.2}\protected@file@percent }
+\newlabel{sec:related}{{2}{2}{Related Work}{section.2}{}}
+\citation{hc3dataset}
+\citation{qwen2025qwen}
+\citation{marks2024geometry}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Methodology}{3}{section.3}\protected@file@percent }
+\newlabel{sec:method}{{3}{3}{Methodology}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Data}{3}{subsection.3.1}\protected@file@percent }
+\newlabel{sec:data}{{3.1}{3}{Data}{subsection.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Activation Extraction}{3}{subsection.3.2}\protected@file@percent }
+\newlabel{sec:activation}{{3.2}{3}{Activation Extraction}{subsection.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Direction Extraction and Classification}{3}{subsection.3.3}\protected@file@percent }
+\newlabel{sec:direction}{{3.3}{3}{Direction Extraction and Classification}{subsection.3.3}{}}
+\newlabel{eq:direction}{{1}{3}{Direction Extraction and Classification}{equation.3.1}{}}
+\newlabel{eq:probe}{{2}{3}{Direction Extraction and Classification}{equation.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Confound Analysis}{3}{subsection.3.4}\protected@file@percent }
+\newlabel{sec:confound_method}{{3.4}{3}{Confound Analysis}{subsection.3.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Classification accuracy of the AI direction at selected layers of \textsc  {Qwen2.5-3B}\xspace  . We report accuracy and AUC on the held-out test set (100 pairs), along with train accuracy and the mean random-direction baseline. The best test result is \textbf  {bolded}.}}{4}{table.1}\protected@file@percent }
+\newlabel{tab:layer_results}{{1}{4}{Classification accuracy of the AI direction at selected layers of \qwen . We report accuracy and AUC on the held-out test set (100 pairs), along with train accuracy and the mean random-direction baseline. The best test result is \textbf {bolded}}{table.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Causal Steering}{4}{subsection.3.5}\protected@file@percent }
+\newlabel{sec:steering_method}{{3.5}{4}{Causal Steering}{subsection.3.5}{}}
+\newlabel{eq:steer}{{3}{4}{Causal Steering}{equation.3.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Results}{4}{section.4}\protected@file@percent }
+\newlabel{sec:results}{{4}{4}{Results}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}The AI Direction Achieves High Classification Accuracy}{4}{subsection.4.1}\protected@file@percent }
+\newlabel{sec:classification}{{4.1}{4}{The AI Direction Achieves High Classification Accuracy}{subsection.4.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}The Direction Is Heavily Confounded with Text Length}{4}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:confound}{{4.2}{4}{The Direction Is Heavily Confounded with Text Length}{subsection.4.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces PCA projections of residual stream activations at four layers, colored by label (AI vs.\ human). Separation emerges by layer 12 and is well-established by layer 21, consistent with classification accuracy trends.}}{5}{figure.1}\protected@file@percent }
+\newlabel{fig:pca}{{1}{5}{PCA projections of residual stream activations at four layers, colored by label (AI vs.\ human). Separation emerges by layer 12 and is well-established by layer 21, consistent with classification accuracy trends}{figure.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Confound analysis at the best layer (layer 21). The AI direction has 0.93 cosine similarity with the length direction, and a length-only direction achieves comparable accuracy. After removing the length component, accuracy drops to 82\%, with the best length-orthogonal result at layer 33 (85.5\%).}}{5}{table.2}\protected@file@percent }
+\newlabel{tab:confound}{{2}{5}{Confound analysis at the best layer (layer 21). The AI direction has 0.93 cosine similarity with the length direction, and a length-only direction achieves comparable accuracy. After removing the length component, accuracy drops to 82\%, with the best length-orthogonal result at layer 33 (85.5\%)}{table.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}A Residual Style Signal Persists After Controlling for Length}{5}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:length_controlled}{{4.3}{5}{A Residual Style Signal Persists After Controlling for Length}{subsection.4.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Confound analysis. {\em  (Left)}\nobreakspace  {}Cosine similarity between the AI direction and length direction across layers. {\em  (Right)}\nobreakspace  {}Scatter plot of text length versus AI-direction projection, showing strong correlation both between and within classes.}}{6}{figure.2}\protected@file@percent }
+\newlabel{fig:confound}{{2}{6}{Confound analysis. \figleft ~Cosine similarity between the AI direction and length direction across layers. \figright ~Scatter plot of text length versus AI-direction projection, showing strong correlation both between and within classes}{figure.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Classification accuracy before and after removing the length component. The original direction (blue) achieves $>$96\% across most layers, while the length-orthogonal direction (orange) retains 78--85.5\% accuracy, confirming a genuine style signal beyond length.}}{6}{figure.3}\protected@file@percent }
+\newlabel{fig:length_controlled}{{3}{6}{Classification accuracy before and after removing the length component. The original direction (blue) achieves $>$96\% across most layers, while the length-orthogonal direction (orange) retains 78--85.5\% accuracy, confirming a genuine style signal beyond length}{figure.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Steering Shifts Output Style}{6}{subsection.4.4}\protected@file@percent }
+\newlabel{sec:steering}{{4.4}{6}{Steering Shifts Output Style}{subsection.4.4}{}}
+\citation{marks2024geometry}
+\citation{arditi2024refusal}
+\citation{panickssery2024steering}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces LLM judge scores (GPT-4.1, 1--7 scale, higher = more AI-like) for steered generations across five prompts. Adding the AI direction increases perceived AI-likeness, while subtracting it decreases it, though the effect is modest.}}{7}{table.3}\protected@file@percent }
+\newlabel{tab:steering}{{3}{7}{LLM judge scores (GPT-4.1, 1--7 scale, higher = more AI-like) for steered generations across five prompts. Adding the AI direction increases perceived AI-likeness, while subtracting it decreases it, though the effect is modest}{table.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Mean LLM judge score (1--7, higher = more AI-like) as a function of steering multiplier $\alpha $. A positive trend is visible, though the dynamic range is compressed because the base model already produces AI-like text.}}{7}{figure.4}\protected@file@percent }
+\newlabel{fig:steering}{{4}{7}{Mean LLM judge score (1--7, higher = more AI-like) as a function of steering multiplier $\alpha $. A positive trend is visible, though the dynamic range is compressed because the base model already produces AI-like text}{figure.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{7}{section.5}\protected@file@percent }
+\newlabel{sec:discussion}{{5}{7}{Discussion}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}``Sounding Like AI'' Is Real but Composite}{7}{subsection.5.1}\protected@file@percent }
+\citation{marks2024geometry}
+\citation{arditi2024refusal}
+\citation{panickssery2024steering}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Comparison with prior work on linear directions in language models. Our raw accuracy is high but substantially confounded with length. The length-controlled accuracy is comparable to behavioral steering results.}}{8}{table.4}\protected@file@percent }
+\newlabel{tab:comparison}{{4}{8}{Comparison with prior work on linear directions in language models. Our raw accuracy is high but substantially confounded with length. The length-controlled accuracy is comparable to behavioral steering results}{table.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Comparison to Prior Linear Directions}{8}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Implications for AI Text Detection}{8}{subsection.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Limitations}{8}{subsection.5.4}\protected@file@percent }
+\newlabel{sec:limitations}{{5.4}{8}{Limitations}{subsection.5.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{8}{section.6}\protected@file@percent }
+\newlabel{sec:conclusion}{{6}{8}{Conclusion}{section.6}{}}
+\citation{cunningham2023sparse}
+\bibstyle{plainnat}
+\bibdata{references}
+\bibcite{arditi2024refusal}{{1}{2024}{{Arditi et~al.}}{{Arditi, Obeso, Syed, Paleka, Panickssery, Guo, and R{\"o}ttger}}}
+\bibcite{cunningham2023sparse}{{2}{2023}{{Cunningham et~al.}}{{Cunningham, Ewart, Riggs, Huben, and Sharkey}}}
+\bibcite{hc3dataset}{{3}{2023}{{Hello-SimpleAI}}{{}}}
+\bibcite{konen2024style}{{4}{2024}{{Konen et~al.}}{{Konen, Dietz, Quality, Bauckhage, and Sifa}}}
+\bibcite{lai2024style}{{5}{2024}{{Lai et~al.}}{{Lai, Hangya, and Fraser}}}
+\bibcite{marks2024geometry}{{6}{2024}{{Marks and Tegmark}}{{}}}
+\bibcite{panickssery2024steering}{{7}{2024}{{Panickssery et~al.}}{{Panickssery, Gabrieli, Schulz, Tong, Hubinger, and Turner}}}
+\bibcite{park2023linear}{{8}{2023}{{Park et~al.}}{{Park, Choe, and Veitch}}}
+\bibcite{qwen2025qwen}{{9}{2025}{{Qwen Team}}{{}}}
+\bibcite{turner2023activation}{{10}{2023}{{Turner et~al.}}{{Turner, Thiergart, Udell, Leech, Mini, and Zanichelli}}}
+\bibcite{zou2023representation}{{11}{2023}{{Zou et~al.}}{{Zou, Phan, Chen, Campbell, Guo, Ren, Pan, Yin, Mazeika, Dombrowski, et~al.}}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Experimental Details}{10}{appendix.A}\protected@file@percent }
+\newlabel{app:details}{{A}{10}{Experimental Details}{appendix.A}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {B}Additional Layer-wise Results}{10}{appendix.B}\protected@file@percent }
+\newlabel{app:layers}{{B}{10}{Additional Layer-wise Results}{appendix.B}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Mass-mean probing accuracy (left axis) and PCA silhouette score (right axis) across all layers. Both metrics rise through early layers and plateau in the middle-to-late layers.}}{10}{figure.5}\protected@file@percent }
+\newlabel{fig:accuracy_layers}{{5}{10}{Mass-mean probing accuracy (left axis) and PCA silhouette score (right axis) across all layers. Both metrics rise through early layers and plateau in the middle-to-late layers}{figure.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {C}Cross-Layer Direction Similarity}{10}{appendix.C}\protected@file@percent }
+\newlabel{app:similarity}{{C}{10}{Cross-Layer Direction Similarity}{appendix.C}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {D}Steering Examples}{10}{appendix.D}\protected@file@percent }
+\newlabel{app:steering}{{D}{10}{Steering Examples}{appendix.D}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Cosine similarity between AI directions extracted at different layers. The direction is stable across the middle and late layers (8--35), with distinct representations at the embedding and final layers.}}{11}{figure.6}\protected@file@percent }
+\newlabel{fig:cross_layer}{{6}{11}{Cosine similarity between AI directions extracted at different layers. The direction is stable across the middle and late layers (8--35), with distinct representations at the embedding and final layers}{figure.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Full steering examples for the prompt ``Write a short paragraph about climate change.'' Negative multipliers produce simpler, more repetitive text; positive multipliers produce more formal, structured, and comprehensive text.}}{11}{table.5}\protected@file@percent }
+\newlabel{tab:steering_examples}{{5}{11}{Full steering examples for the prompt ``Write a short paragraph about climate change.'' Negative multipliers produce simpler, more repetitive text; positive multipliers produce more formal, structured, and comprehensive text}{table.5}{}}

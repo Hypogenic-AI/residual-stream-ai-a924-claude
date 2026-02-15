@@ -1,0 +1,62 @@
+\appendix
+
+\section{Experimental Details}
+\label{app:details}
+
+\para{Hardware.} All experiments were conducted on a single NVIDIA RTX 3090 (24GB VRAM). Activation extraction for 200 training pairs takes approximately 30 seconds.
+
+\para{Software.} We use PyTorch 2.10.0 with CUDA 12.8, HuggingFace Transformers 5.1.0, and scikit-learn for PCA and metrics. The model is loaded in float16 precision.
+
+\para{Hyperparameters.} We use a maximum token length of 512, extract activations at the last token position, and set the random seed to 42 for all experiments. For steering, we use temperature 0.7 and generate up to 150 new tokens.
+
+\section{Additional Layer-wise Results}
+\label{app:layers}
+
+\Figref{fig:accuracy_layers} shows classification accuracy and silhouette scores across all 37 layers. Accuracy rises sharply between layers 0 and 8, then plateaus above 96\%. Silhouette scores follow a similar but smoother trajectory, peaking in layers 28--31.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.95\linewidth]{figures/accuracy_silhouette_by_layer.png}
+    \caption{Mass-mean probing accuracy (left axis) and PCA silhouette score (right axis) across all layers. Both metrics rise through early layers and plateau in the middle-to-late layers.}
+    \label{fig:accuracy_layers}
+\end{figure}
+
+\section{Cross-Layer Direction Similarity}
+\label{app:similarity}
+
+\Figref{fig:cross_layer} shows the cosine similarity matrix between AI directions at all pairs of layers. The direction is highly consistent (similarity $>$ 0.85) across layers 8--35, with a qualitative break at layer 0 (embedding) and layer 36 (final).
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/cross_layer_similarity.png}
+    \caption{Cosine similarity between AI directions extracted at different layers. The direction is stable across the middle and late layers (8--35), with distinct representations at the embedding and final layers.}
+    \label{fig:cross_layer}
+\end{figure}
+
+\section{Steering Examples}
+\label{app:steering}
+
+\Tabref{tab:steering_examples} shows full steering examples for the climate change prompt across all five multipliers.
+
+\begin{table}[h]
+    \centering
+    \caption{Full steering examples for the prompt ``Write a short paragraph about climate change.'' Negative multipliers produce simpler, more repetitive text; positive multipliers produce more formal, structured, and comprehensive text.}
+    \label{tab:steering_examples}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{@{}cp{12cm}c@{}}
+        \toprule
+        $\alpha$ & Generated Text (truncated) & AI Score \\
+        \midrule
+        $-33.2$ & ``The climate is changing. The world is getting warmer. The poles are melting. The oceans are rising. The sea levels are rising\ldots'' & 3 \\
+        \midrule
+        $-16.6$ & ``Climate change is the long-term change of the climate. It can be caused by natural factors or human activity. The increase in greenhouse gases has resulted in a rise in temperature\ldots'' & 6 \\
+        \midrule
+        $0.0$ & ``Climate change is a global phenomenon that has been occurring for thousands of years, but the current rate of warming is much faster than in the past\ldots'' & 6 \\
+        \midrule
+        $+16.6$ & ``Climate change refers to the long-term changes in Earth's temperature, weather patterns, and overall climate that are caused by various factors, including human activities such as burning fossil fuels\ldots'' & 6 \\
+        \midrule
+        $+33.2$ & ``Climate change is a pressing global issue that poses significant risks to the environment and human well-being. It is caused by the increase of greenhouse gases\ldots'' & 6 \\
+        \bottomrule
+    \end{tabular}%
+    }
+\end{table}

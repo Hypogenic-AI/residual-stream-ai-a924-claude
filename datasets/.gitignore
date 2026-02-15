@@ -1,0 +1,12 @@
+# Ignore large dataset files
+*.parquet
+*.csv
+*.jsonl
+*.json
+!download_datasets.py
+!README.md
+*.zip
+*.tar.gz
+*.arrow
+*.bin
+data/

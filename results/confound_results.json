@@ -1,0 +1,12 @@
+{
+  "cosine_sim_ai_vs_length": 0.9302265644073486,
+  "original_accuracy": 0.975,
+  "accuracy_after_removing_length": 0.82,
+  "accuracy_drop": 0.15500000000000003,
+  "human_length_ai_corr": 0.2049826303215703,
+  "ai_length_ai_corr": 0.45099102539010805,
+  "random_cosine_sim_mean": 0.017086201603815424,
+  "random_cosine_sim_std": 0.012749138198789743,
+  "human_text_len_mean": 446.19,
+  "ai_text_len_mean": 913.98
+}

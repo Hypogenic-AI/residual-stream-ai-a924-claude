@@ -1,0 +1,23 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Related Work}{}% 2
+\BOOKMARK [1][-]{section.3}{Methodology}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Data}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Activation Extraction}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.3}{Direction Extraction and Classification}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.4}{Confound Analysis}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.5}{Causal Steering}{section.3}% 8
+\BOOKMARK [1][-]{section.4}{Results}{}% 9
+\BOOKMARK [2][-]{subsection.4.1}{The AI Direction Achieves High Classification Accuracy}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.2}{The Direction Is Heavily Confounded with Text Length}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.3}{A Residual Style Signal Persists After Controlling for Length}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.4}{Steering Shifts Output Style}{section.4}% 13
+\BOOKMARK [1][-]{section.5}{Discussion}{}% 14
+\BOOKMARK [2][-]{subsection.5.1}{``Sounding Like AI'' Is Real but Composite}{section.5}% 15
+\BOOKMARK [2][-]{subsection.5.2}{Comparison to Prior Linear Directions}{section.5}% 16
+\BOOKMARK [2][-]{subsection.5.3}{Implications for AI Text Detection}{section.5}% 17
+\BOOKMARK [2][-]{subsection.5.4}{Limitations}{section.5}% 18
+\BOOKMARK [1][-]{section.6}{Conclusion}{}% 19
+\BOOKMARK [1][-]{appendix.A}{Experimental Details}{}% 20
+\BOOKMARK [1][-]{appendix.B}{Additional Layer-wise Results}{}% 21
+\BOOKMARK [1][-]{appendix.C}{Cross-Layer Direction Similarity}{}% 22
+\BOOKMARK [1][-]{appendix.D}{Steering Examples}{}% 23

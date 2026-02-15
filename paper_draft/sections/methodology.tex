@@ -1,0 +1,58 @@
+\section{Methodology}
+\label{sec:method}
+
+We follow the contrastive activation addition (\caa) methodology of \citet{panickssery2024steering} and the mass-mean probing framework of \citet{marks2024geometry}. Our pipeline has four stages: data preparation, activation extraction, direction extraction with classification, and causal steering.
+
+\subsection{Data}
+\label{sec:data}
+
+We use the \hcthree (Human ChatGPT Comparison Corpus) dataset \citep{hc3dataset}, which contains questions answered by both human respondents and ChatGPT. Each data point consists of a question paired with a human answer and an AI-generated answer, providing natural contrastive pairs on the same topic.
+
+\para{Filtering and statistics.} From 24,322 total entries, we retain 18,826 valid pairs after filtering for entries that have both human and AI responses with character counts between 50 and 1,500. The sources span reddit\_eli5 (69\%), finance (13\%), medicine (8\%), open\_qa (6\%), and wiki\_csai (4\%). We randomly split the data into train (200 pairs), validation (50 pairs), and test (100 pairs) sets using a fixed random seed of 42.
+
+\para{Length distribution.} A critical property of this dataset is the systematic length difference: human answers average 446 characters (86 words) while AI answers average 914 characters (159 words), making AI text approximately $2\times$ longer. We return to this confound in \secref{sec:confound}.
+
+\subsection{Activation Extraction}
+\label{sec:activation}
+
+We use \qwen \citep{qwen2025qwen}, a 3-billion-parameter transformer with 36 layers and a hidden dimension of 2,048, loaded in float16 precision on a single NVIDIA RTX 3090. For each text in our dataset, we tokenize with a maximum length of 512 tokens and perform a forward pass through the model, recording the residual stream activation at the last token position across all 37 layer outputs (the embedding layer plus 36 transformer layers). We use the last token because it aggregates information from the full sequence and is standard for sequence-level feature extraction.
+
+\subsection{Direction Extraction and Classification}
+\label{sec:direction}
+
+\para{Difference-in-means.} At each layer $l$, we compute the AI direction as the normalized difference-in-means:
+\begin{equation}
+    \vd_l = \frac{\bar{\va}_l^{\text{AI}} - \bar{\va}_l^{\text{human}}}{\|\bar{\va}_l^{\text{AI}} - \bar{\va}_l^{\text{human}}\|},
+    \label{eq:direction}
+\end{equation}
+where $\bar{\va}_l^{\text{AI}}$ and $\bar{\va}_l^{\text{human}}$ are the mean activations over all AI and human texts in the training set at layer $l$, respectively.
+
+\para{Mass-mean probing.} Following \citet{marks2024geometry}, we classify a text as AI-generated if its activation projects more strongly onto the AI direction:
+\begin{equation}
+    \hat{y} = \mathbf{1}\!\left[\langle \va_l - \bar{\va}_l, \vd_l \rangle > 0\right],
+    \label{eq:probe}
+\end{equation}
+where $\bar{\va}_l$ is the mean of all activations at layer $l$ and $\langle \cdot, \cdot \rangle$ denotes the inner product. We select the best layer using validation accuracy.
+
+\para{Baselines.} We compare against two baselines: (1)~\emph{random direction}: 100 random unit vectors in activation space, providing a chance-level reference (expected accuracy $\approx$ 50\%); and (2)~\emph{length-only direction}: a direction computed from the difference-in-means between long and short texts (median-split), measuring how much classification can be explained by length alone.
+
+\subsection{Confound Analysis}
+\label{sec:confound_method}
+
+To disentangle AI style from text length, we extract a \emph{length direction} $\vd_l^{\text{len}}$ using the same difference-in-means procedure on texts split by median length (regardless of AI/human label). We then measure:
+
+\begin{itemize}[leftmargin=*,itemsep=1pt,topsep=2pt]
+    \item \textbf{Cosine similarity} between $\vd_l$ and $\vd_l^{\text{len}}$, quantifying directional overlap.
+    \item \textbf{Length-orthogonal accuracy}: We project out the length component from the AI direction: $\vd_l^{\perp} = \vd_l - (\vd_l \cdot \vd_l^{\text{len}})\,\vd_l^{\text{len}}$, re-normalize, and re-evaluate classification accuracy.
+    \item \textbf{Within-class correlations}: Pearson correlation between text length and projection onto the AI direction within each class, to check whether the direction captures length even within AI-only or human-only subsets.
+\end{itemize}
+
+\subsection{Causal Steering}
+\label{sec:steering_method}
+
+To test causal relevance, we add the extracted direction to the residual stream during generation:
+\begin{equation}
+    \va_l' = \va_l + \alpha \cdot \vd_l,
+    \label{eq:steer}
+\end{equation}
+where $\alpha$ is a scalar multiplier controlling the steering strength. We test five multipliers ($\alpha \in \{-33.2, -16.6, 0, +16.6, +33.2\}$) across five diverse prompts. We generate 150 tokens per prompt at temperature 0.7 and evaluate outputs using GPT-4.1 as a judge, scoring each output on a 1--7 scale for perceived AI-likeness (1 = clearly human, 7 = clearly AI).

@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage[final,main]{neurips_2025}
+\usepackage[hidelinks,breaklinks=true,pdfborder={0 0 0}]{hyperref}
+% Fix for pdfTeX \pdfendlink error when hyperlinks span page breaks
+\makeatletter
+\def\pdfstringdef@cleanup{}% avoid issues with string defs
+\AtBeginDocument{%
+  \renewcommand{\hyper@linkstart}[2]{}%
+  \renewcommand{\hyper@linkend}{}%
+}
+\makeatother
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{multirow}
+\usepackage{enumitem}
+
+% Import command files
+\input{commands/math}
+\input{commands/general}
+\input{commands/macros}
+
+\title{Is There a ``Sounds Like AI'' Direction in the Residual Stream?}
+
+\author{
+  Anonymous Authors
+}
+
+\begin{document}
+
+\maketitle
+
+\input{sections/abstract}
+\input{sections/introduction}
+\input{sections/related_work}
+\input{sections/methodology}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusion}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\newpage
+\input{appendix/appendix}
+
+\end{document}

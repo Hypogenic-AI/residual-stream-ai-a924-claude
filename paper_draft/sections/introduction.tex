@@ -1,0 +1,16 @@
+\section{Introduction}
+\label{sec:intro}
+
+People can often tell when text was written by an AI. ChatGPT outputs tend to hedge (``I'd be happy to help''), over-structure (numbered lists, topic sentences), and adopt a formal, encyclopedic tone that human writers rarely match in casual settings. This ``AI-sounding'' quality is arguably the most pervasive stylistic property of modern language model outputs---and one that users, developers, and regulators all care about. But what is this quality, computationally? Is ``sounding like AI'' a single, coherent feature that the model represents internally, or is it an emergent composite of many loosely correlated surface patterns?
+
+Recent work on the \emph{linear representation hypothesis} \citep{park2023linear} has shown that high-level concepts---truth \citep{marks2024geometry}, refusal \citep{arditi2024refusal}, sycophancy \citep{panickssery2024steering}, and sentiment \citep{konen2024style}---are encoded as linear directions in the residual stream of transformer language models. These directions can be extracted via simple contrastive methods and used to causally steer model behavior. If ``AI-sounding'' is similarly represented, we could use activation interventions to make LLM outputs more natural, develop AI text detectors grounded in model internals, and gain mechanistic insight into what distinguishes AI writing from human writing.
+
+\para{Our contribution.} We directly test whether ``sounding like AI'' constitutes a linear direction in the residual stream. Using the \hcthree dataset \citep{hc3dataset}---which pairs human and ChatGPT answers to the same questions---we extract a contrastive direction from \qwen \citep{qwen2025qwen} and evaluate it along three axes: classification accuracy, confound analysis, and causal steering. Our main findings are:
+
+\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=0pt]
+    \item We extract a direction that classifies AI versus human text with 97.5\% test accuracy (AUC = 0.999), emerging in middle layers and peaking at layer 21 (58\% of model depth).
+    \item We identify a critical confound: this direction has 0.93 cosine similarity with a text-length direction, reflecting the systematic verbosity of ChatGPT. After removing the length component, a residual style direction still achieves 85.5\% accuracy, confirming a genuine style signal beyond length.
+    \item We demonstrate causal relevance through activation steering: subtracting the direction produces simpler, more repetitive text, while adding it yields more formal, structured, and comprehensive outputs.
+\end{itemize}
+
+Our results paint a nuanced picture. ``Sounding like AI'' \emph{is} linearly represented, but it is not as clean a concept as truth or refusal. It decomposes into a dominant length component and a weaker but real style component, suggesting that the model's internal representation of ``AI-ness'' is a composite rather than a natural kind.

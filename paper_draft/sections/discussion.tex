@@ -1,0 +1,53 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{``Sounding Like AI'' Is Real but Composite}
+
+Our results confirm that a linear direction associated with ``sounding like AI'' exists in the residual stream of \qwen. The 97.5\% classification accuracy and 0.999 AUC demonstrate strong linear separability between AI and human text representations. However, the story is more nuanced than prior work on truth \citep{marks2024geometry} or refusal \citep{arditi2024refusal}, where extracted directions cleanly correspond to a single concept.
+
+The dominant component of the AI direction is \emph{text length}. With a cosine similarity of 0.93 between the AI and length directions, and identical classification accuracy for a length-only baseline, the model's primary internal distinction between AI and human text is verbosity. This finding aligns with a simple observation: the most statistically salient difference between ChatGPT and human responses in the \hcthree dataset is that ChatGPT writes approximately $2\times$ more text.
+
+The residual style signal (85.5\% accuracy after projecting out length) is genuine and non-trivial. It captures aspects of AI writing---formal register, hedging expressions, structured presentation---that are independent of response length. However, this signal is weaker than the composite, suggesting that ``AI-sounding'' is better understood as a bundle of correlated features than a single natural kind in the model's representation space.
+
+\subsection{Comparison to Prior Linear Directions}
+
+\Tabref{tab:comparison} places our results in context. The raw accuracy of 97.5\% is among the highest reported, but this is inflated by the length confound. The length-controlled accuracy of 85.5\% is comparable to behavioral trait classification in \citet{panickssery2024steering}, which reports 75--90\% for traits like sycophancy and corrigibility.
+
+\begin{table}[t]
+    \centering
+    \caption{Comparison with prior work on linear directions in language models. Our raw accuracy is high but substantially confounded with length. The length-controlled accuracy is comparable to behavioral steering results.}
+    \label{tab:comparison}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{@{}llccc@{}}
+        \toprule
+        Study & Concept & Best Accuracy & Optimal Layer & Confound Severity \\
+        \midrule
+        \citet{marks2024geometry} & Truth/falsehood & $>$95\% & $\sim$38\% depth & Minimal \\
+        \citet{arditi2024refusal} & Refusal & $\sim$95\%+ & 31--78\% depth & Minimal \\
+        \citet{panickssery2024steering} & Behavioral traits & 75--90\% & $\sim$40\% depth & Moderate \\
+        \textbf{This work} & \textbf{AI-sounding} & \textbf{97.5\% (85.5\% controlled)} & \textbf{58\% depth} & \textbf{High (length)} \\
+        \bottomrule
+    \end{tabular}%
+    }
+\end{table}
+
+The key difference is that truth and refusal are \emph{semantically clean} binary concepts: a statement is true or false, a model refuses or complies. ``AI-sounding'' is a composite perceptual judgment that bundles many surface features. This raises a broader question for the linear representations literature: how should we handle directions that conflate multiple correlated signals?
+
+\subsection{Implications for AI Text Detection}
+
+Our findings have practical implications for AI-generated text detection. Detectors that rely on model internals (rather than surface features) must control for text length to avoid spurious accuracy. A detector based on the raw AI direction would perform well in-distribution but would misclassify any long human text or short AI text. The length-orthogonal direction provides a more robust basis, though its lower accuracy (85.5\%) limits practical utility as a standalone detector.
+
+More broadly, our results suggest that AI text detection via linear probing is feasible but requires careful confound control---a methodological lesson that extends beyond length to other correlated features like topic, formality, and vocabulary richness.
+
+\subsection{Limitations}
+\label{sec:limitations}
+
+\para{Length confound.} The \hcthree dataset has a systematic $2\times$ length difference between human and AI answers. A length-matched dataset---constructed by filtering or truncating responses to equal length---would provide cleaner evidence for a pure style direction.
+
+\para{Single AI source.} All AI text comes from ChatGPT. The extracted direction may not generalize to text from other models (Claude, Gemini, Llama), though the length confound likely applies across models.
+
+\para{Base model.} We use \qwen as a base model, not a chat-finetuned variant. Chat models, which exhibit a wider range of stylistic control, may yield stronger steering effects and a cleaner AI-style direction.
+
+\para{Small steering evaluation.} We test only 5 prompts with a single LLM judge evaluation each. A larger-scale evaluation with multiple runs, diverse prompts, and human judges would provide more robust evidence for causal relevance.
+
+\para{Single direction assumption.} ``AI-sounding'' may be multi-dimensional, with separate directions for hedging, formality, comprehensiveness, and structured formatting. A multi-dimensional subspace analysis could reveal richer structure.

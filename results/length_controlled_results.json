@@ -1,0 +1,228 @@
+{
+  "best_layer_original": 21,
+  "best_layer_length_orthogonal": 33,
+  "layer_results_controlled": {
+    "0": {
+      "original_acc": 0.89,
+      "length_orthogonal_acc": 0.815,
+      "length_orthogonal_auc": 0.7506,
+      "length_only_acc": 0.865
+    },
+    "1": {
+      "original_acc": 0.88,
+      "length_orthogonal_acc": 0.795,
+      "length_orthogonal_auc": 0.7025,
+      "length_only_acc": 0.88
+    },
+    "2": {
+      "original_acc": 0.88,
+      "length_orthogonal_acc": 0.81,
+      "length_orthogonal_auc": 0.6839,
+      "length_only_acc": 0.88
+    },
+    "3": {
+      "original_acc": 0.88,
+      "length_orthogonal_acc": 0.785,
+      "length_orthogonal_auc": 0.6839,
+      "length_only_acc": 0.885
+    },
+    "4": {
+      "original_acc": 0.88,
+      "length_orthogonal_acc": 0.805,
+      "length_orthogonal_auc": 0.6899,
+      "length_only_acc": 0.885
+    },
+    "5": {
+      "original_acc": 0.88,
+      "length_orthogonal_acc": 0.79,
+      "length_orthogonal_auc": 0.6993999999999999,
+      "length_only_acc": 0.89
+    },
+    "6": {
+      "original_acc": 0.87,
+      "length_orthogonal_acc": 0.795,
+      "length_orthogonal_auc": 0.6925,
+      "length_only_acc": 0.875
+    },
+    "7": {
+      "original_acc": 0.875,
+      "length_orthogonal_acc": 0.785,
+      "length_orthogonal_auc": 0.7142000000000001,
+      "length_only_acc": 0.88
+    },
+    "8": {
+      "original_acc": 0.95,
+      "length_orthogonal_acc": 0.765,
+      "length_orthogonal_auc": 0.7935,
+      "length_only_acc": 0.96
+    },
+    "9": {
+      "original_acc": 0.855,
+      "length_orthogonal_acc": 0.775,
+      "length_orthogonal_auc": 0.8512,
+      "length_only_acc": 0.86
+    },
+    "10": {
+      "original_acc": 0.85,
+      "length_orthogonal_acc": 0.78,
+      "length_orthogonal_auc": 0.7996,
+      "length_only_acc": 0.855
+    },
+    "11": {
+      "original_acc": 0.855,
+      "length_orthogonal_acc": 0.79,
+      "length_orthogonal_auc": 0.8217000000000001,
+      "length_only_acc": 0.86
+    },
+    "12": {
+      "original_acc": 0.96,
+      "length_orthogonal_acc": 0.83,
+      "length_orthogonal_auc": 0.8768,
+      "length_only_acc": 0.95
+    },
+    "13": {
+      "original_acc": 0.96,
+      "length_orthogonal_acc": 0.84,
+      "length_orthogonal_auc": 0.9109,
+      "length_only_acc": 0.955
+    },
+    "14": {
+      "original_acc": 0.97,
+      "length_orthogonal_acc": 0.815,
+      "length_orthogonal_auc": 0.8889,
+      "length_only_acc": 0.965
+    },
+    "15": {
+      "original_acc": 0.955,
+      "length_orthogonal_acc": 0.81,
+      "length_orthogonal_auc": 0.8686,
+      "length_only_acc": 0.95
+    },
+    "16": {
+      "original_acc": 0.955,
+      "length_orthogonal_acc": 0.795,
+      "length_orthogonal_auc": 0.8694999999999999,
+      "length_only_acc": 0.955
+    },
+    "17": {
+      "original_acc": 0.965,
+      "length_orthogonal_acc": 0.765,
+      "length_orthogonal_auc": 0.8279,
+      "length_only_acc": 0.955
+    },
+    "18": {
+      "original_acc": 0.96,
+      "length_orthogonal_acc": 0.795,
+      "length_orthogonal_auc": 0.8666,
+      "length_only_acc": 0.96
+    },
+    "19": {
+      "original_acc": 0.975,
+      "length_orthogonal_acc": 0.825,
+      "length_orthogonal_auc": 0.8783000000000001,
+      "length_only_acc": 0.965
+    },
+    "20": {
+      "original_acc": 0.955,
+      "length_orthogonal_acc": 0.825,
+      "length_orthogonal_auc": 0.8746,
+      "length_only_acc": 0.955
+    },
+    "21": {
+      "original_acc": 0.975,
+      "length_orthogonal_acc": 0.81,
+      "length_orthogonal_auc": 0.8688,
+      "length_only_acc": 0.975
+    },
+    "22": {
+      "original_acc": 0.98,
+      "length_orthogonal_acc": 0.8,
+      "length_orthogonal_auc": 0.8733000000000001,
+      "length_only_acc": 0.97
+    },
+    "23": {
+      "original_acc": 0.98,
+      "length_orthogonal_acc": 0.81,
+      "length_orthogonal_auc": 0.8782000000000001,
+      "length_only_acc": 0.965
+    },
+    "24": {
+      "original_acc": 0.97,
+      "length_orthogonal_acc": 0.82,
+      "length_orthogonal_auc": 0.8876999999999999,
+      "length_only_acc": 0.965
+    },
+    "25": {
+      "original_acc": 0.96,
+      "length_orthogonal_acc": 0.825,
+      "length_orthogonal_auc": 0.8884000000000001,
+      "length_only_acc": 0.965
+    },
+    "26": {
+      "original_acc": 0.97,
+      "length_orthogonal_acc": 0.83,
+      "length_orthogonal_auc": 0.8901,
+      "length_only_acc": 0.97
+    },
+    "27": {
+      "original_acc": 0.99,
+      "length_orthogonal_acc": 0.82,
+      "length_orthogonal_auc": 0.8697000000000001,
+      "length_only_acc": 0.99
+    },
+    "28": {
+      "original_acc": 0.985,
+      "length_orthogonal_acc": 0.825,
+      "length_orthogonal_auc": 0.8878,
+      "length_only_acc": 0.985
+    },
+    "29": {
+      "original_acc": 0.985,
+      "length_orthogonal_acc": 0.85,
+      "length_orthogonal_auc": 0.8955,
+      "length_only_acc": 0.985
+    },
+    "30": {
+      "original_acc": 0.985,
+      "length_orthogonal_acc": 0.835,
+      "length_orthogonal_auc": 0.8917999999999999,
+      "length_only_acc": 0.985
+    },
+    "31": {
+      "original_acc": 0.975,
+      "length_orthogonal_acc": 0.835,
+      "length_orthogonal_auc": 0.897,
+      "length_only_acc": 0.975
+    },
+    "32": {
+      "original_acc": 0.98,
+      "length_orthogonal_acc": 0.82,
+      "length_orthogonal_auc": 0.8864000000000001,
+      "length_only_acc": 0.975
+    },
+    "33": {
+      "original_acc": 0.975,
+      "length_orthogonal_acc": 0.855,
+      "length_orthogonal_auc": 0.8880000000000001,
+      "length_only_acc": 0.975
+    },
+    "34": {
+      "original_acc": 0.965,
+      "length_orthogonal_acc": 0.83,
+      "length_orthogonal_auc": 0.9021,
+      "length_only_acc": 0.965
+    },
+    "35": {
+      "original_acc": 0.965,
+      "length_orthogonal_acc": 0.805,
+      "length_orthogonal_auc": 0.8804000000000001,
+      "length_only_acc": 0.96
+    },
+    "36": {
+      "original_acc": 0.96,
+      "length_orthogonal_acc": 0.76,
+      "length_orthogonal_auc": 0.8002,
+      "length_only_acc": 0.965
+    }
+  }
+}

@@ -1,0 +1,23 @@
+Resource gathering complete.
+
+Topic: Is there a "sounds like AI" direction in the residual stream?
+
+Summary:
+- 17 papers downloaded to papers/ (5 deep-read with detailed notes)
+- 7 datasets cataloged with download script in datasets/
+- 4 code repositories cloned to code/
+- literature_review.md: comprehensive synthesis of findings
+- resources.md: complete catalog of all resources
+
+Key finding from literature review:
+The literature strongly supports the plausibility of a "sounds like AI" direction.
+Linear directions encode binary concepts with near-perfect causal control (truth, refusal).
+Style is linearly represented and steerable via activation addition.
+Difference-of-means is the recommended extraction method.
+Middle layers (30-65% of depth) are the primary search space.
+Small datasets suffice (128 training + 32 validation pairs per class).
+
+Recommended next step:
+Use HC3 or dmitva/human_ai_generated_text to construct contrastive pairs,
+extract residual stream activations across layers of a 7-8B model,
+compute difference-of-means directions, validate with PCA and causal interventions.

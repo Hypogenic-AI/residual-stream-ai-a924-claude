@@ -1,0 +1,117 @@
+\section{Results}
+\label{sec:results}
+
+\subsection{The AI Direction Achieves High Classification Accuracy}
+\label{sec:classification}
+
+The difference-in-means direction separates AI from human text with high accuracy across most layers. \Tabref{tab:layer_results} reports results at selected layers. Classification accuracy rises sharply from 89\% at the embedding layer (layer 0) to 95\% by layer 8 (22\% of depth), and plateaus above 96\% from layer 12 onward. The best layer by validation accuracy is layer 21 (58\% of model depth), achieving \textbf{97.5\%} test accuracy with an AUC of 0.999. Random-direction baselines average $\sim$50\% accuracy, confirming that the signal is specific to the extracted direction rather than an artifact of high-dimensional geometry.
+
+\begin{table}[t]
+    \centering
+    \caption{Classification accuracy of the AI direction at selected layers of \qwen. We report accuracy and AUC on the held-out test set (100 pairs), along with train accuracy and the mean random-direction baseline. The best test result is \textbf{bolded}.}
+    \label{tab:layer_results}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{@{}lccccc@{}}
+        \toprule
+        Layer & \% Depth & Train Acc. & Test Acc. & Test AUC & Random Baseline \\
+        \midrule
+        0 (embedding) & 0\% & 0.892 & 0.890 & 0.897 & 0.528 $\pm$ 0.330 \\
+        8 & 22\% & 0.968 & 0.950 & 0.998 & 0.512 $\pm$ 0.219 \\
+        12 & 33\% & 0.960 & 0.960 & 1.000 & 0.531 $\pm$ 0.186 \\
+        \textbf{21} & \textbf{58\%} & \textbf{0.983} & \textbf{0.975} & \textbf{0.999} & 0.476 $\pm$ 0.163 \\
+        27 & 75\% & 0.985 & 0.990 & 0.999 & 0.511 $\pm$ 0.160 \\
+        29 & 81\% & 0.993 & 0.985 & 0.999 & 0.515 $\pm$ 0.171 \\
+        36 (final) & 100\% & 0.978 & 0.960 & 0.983 & 0.469 $\pm$ 0.203 \\
+        \bottomrule
+    \end{tabular}%
+    }
+\end{table}
+
+\Figref{fig:pca} shows PCA projections of combined AI and human activations at layers 0, 12, 21, and 36. The two classes form increasingly distinct clusters from layer 0 (overlapping) to layer 21 (well-separated), with silhouette scores peaking at 0.61 in layers 28--31.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.95\linewidth]{figures/pca_grid.png}
+    \caption{PCA projections of residual stream activations at four layers, colored by label (AI vs.\ human). Separation emerges by layer 12 and is well-established by layer 21, consistent with classification accuracy trends.}
+    \label{fig:pca}
+\end{figure}
+
+\para{Cross-layer consistency.} Adjacent-layer cosine similarity of the AI direction averages 0.87 across layers 8--35, indicating that the direction is stable once it emerges. The direction at layer 0 is qualitatively different from later layers (cosine similarity of 0.09 with layer 1), suggesting a distinct representation at the embedding level.
+
+\subsection{The Direction Is Heavily Confounded with Text Length}
+\label{sec:confound}
+
+\begin{table}[t]
+    \centering
+    \caption{Confound analysis at the best layer (layer 21). The AI direction has 0.93 cosine similarity with the length direction, and a length-only direction achieves comparable accuracy. After removing the length component, accuracy drops to 82\%, with the best length-orthogonal result at layer 33 (85.5\%).}
+    \label{tab:confound}
+    \begin{tabular}{@{}lc@{}}
+        \toprule
+        Metric & Value \\
+        \midrule
+        Cosine sim.\ (AI dir.\ vs.\ length dir.) & 0.930 \\
+        Original accuracy (layer 21) & 0.975 \\
+        Length-only direction accuracy & 0.975 \\
+        Accuracy after removing length (layer 21) & 0.820 \\
+        Best length-orthogonal accuracy (layer 33) & \textbf{0.855} \\
+        Within-class corr.\ (human, length vs.\ AI proj.) & 0.205 \\
+        Within-class corr.\ (AI, length vs.\ AI proj.) & 0.451 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\Tabref{tab:confound} presents the confound analysis. The cosine similarity between the AI direction and the length direction is \textbf{0.93}---extremely high. A length-only direction achieves 97.5\% classification accuracy, matching the AI direction. This is unsurprising given that ChatGPT answers are $2\times$ longer than human answers on average (\secref{sec:data}): the model encodes text length in its last-token representation, and this feature alone nearly perfectly separates the two classes.
+
+\Figref{fig:confound} visualizes the confound analysis. The within-class correlation between text length and AI-direction projection is 0.45 for AI texts and 0.21 for human texts, indicating that even within each class, longer texts project more strongly onto the AI direction.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.95\linewidth]{figures/confound_analysis.png}
+    \caption{Confound analysis. \figleft~Cosine similarity between the AI direction and length direction across layers. \figright~Scatter plot of text length versus AI-direction projection, showing strong correlation both between and within classes.}
+    \label{fig:confound}
+\end{figure}
+
+\subsection{A Residual Style Signal Persists After Controlling for Length}
+\label{sec:length_controlled}
+
+After projecting out the length component, the residual AI direction still classifies with well-above-chance accuracy. The best length-orthogonal direction (layer 33) achieves \textbf{85.5\%} accuracy (AUC = 0.888), compared to the 50\% chance baseline. \Figref{fig:length_controlled} shows that length-orthogonal accuracy is consistent across layers 12--35, ranging from 78\% to 85.5\%. This residual signal captures genuine stylistic differences---formal tone, hedging language, structured presentation, and comprehensive coverage---that distinguish AI text from human text independently of verbosity.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.95\linewidth]{figures/length_controlled_analysis.png}
+    \caption{Classification accuracy before and after removing the length component. The original direction (blue) achieves $>$96\% across most layers, while the length-orthogonal direction (orange) retains 78--85.5\% accuracy, confirming a genuine style signal beyond length.}
+    \label{fig:length_controlled}
+\end{figure}
+
+\subsection{Steering Shifts Output Style}
+\label{sec:steering}
+
+\begin{table}[t]
+    \centering
+    \caption{LLM judge scores (GPT-4.1, 1--7 scale, higher = more AI-like) for steered generations across five prompts. Adding the AI direction increases perceived AI-likeness, while subtracting it decreases it, though the effect is modest.}
+    \label{tab:steering}
+    \begin{tabular}{@{}lcl@{}}
+        \toprule
+        Multiplier $\alpha$ & Mean Score & Individual Scores \\
+        \midrule
+        $-33.2$ (most human) & 5.20 & [6, 6, 3, 6, 5] \\
+        $-16.6$ & 6.00 & [6, 6, 6, 6, 6] \\
+        $0.0$ (baseline) & 5.20 & [6, 2, 6, 6, 6] \\
+        $+16.6$ & 6.20 & [6, 7, 6, 6, 6] \\
+        $+33.2$ (most AI) & \textbf{6.20} & [6, 7, 6, 6, 6] \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\Tabref{tab:steering} reports LLM judge scores for steered generations. Adding the AI direction ($\alpha > 0$) increases the mean AI-likeness score from 5.20 (baseline) to 6.20, while the strongest negative steering ($\alpha = -33.2$) produces a mean score of 5.20. The difference is modest---approximately 1 point on a 7-point scale---but directionally consistent.
+
+\para{Qualitative examples.} The steering produces qualitatively interpretable shifts. For the prompt ``Write a short paragraph about climate change,'' the most negatively steered output ($\alpha = -33.2$) produces simple, repetitive declarative sentences: \emph{``The climate is changing. The world is getting warmer. The poles are melting.''} The baseline ($\alpha = 0$) produces a standard encyclopedic response, while the most positively steered output ($\alpha = +33.2$) produces formal, hedging text: \emph{``Climate change is a pressing global issue that poses significant risks to the environment and human well-being.''}
+
+The relatively small effect size is expected for two reasons. First, \qwen is a base model (not chat-finetuned), so all outputs already carry some ``AI character.'' Second, the extracted direction is largely a length direction, and length effects are harder to steer via activation addition than semantic features like truth or refusal.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figures/steering_scores.png}
+    \caption{Mean LLM judge score (1--7, higher = more AI-like) as a function of steering multiplier $\alpha$. A positive trend is visible, though the dynamic range is compressed because the base model already produces AI-like text.}
+    \label{fig:steering}
+\end{figure}

@@ -1,0 +1,8 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+We investigated whether ``sounding like AI'' is encoded as a linear direction in the residual stream of a transformer language model. Using contrastive activation analysis on paired human and ChatGPT responses, we found a direction that classifies AI versus human text with 97.5\% accuracy. However, this direction is predominantly a length direction (0.93 cosine similarity with text length), reflecting the systematic verbosity of ChatGPT responses. After controlling for length, a residual style direction achieves 85.5\% accuracy, confirming that genuine stylistic differences beyond verbosity are linearly encoded. Causal steering experiments produce qualitatively appropriate style shifts, though with modest effect sizes in a base model.
+
+Our findings suggest that ``sounding like AI'' is not a clean unitary concept like truth or refusal, but rather a composite of correlated features with length as the dominant component. This has implications for both mechanistic interpretability---where confound analysis should be standard practice when extracting linear directions---and AI text detection, where controlling for surface features like length is essential.
+
+\para{Future work.} Three directions are particularly promising: (1)~repeating the analysis with a length-matched dataset to isolate the pure style signal; (2)~using chat-finetuned models where the AI/human style gap is larger and steering effects should be stronger; and (3)~decomposing the AI direction into interpretable sub-components using sparse autoencoders \citep{cunningham2023sparse} to determine whether ``AI-sounding'' is a single feature or a bundle of independent stylistic features.

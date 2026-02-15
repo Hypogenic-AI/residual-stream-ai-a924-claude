@@ -1,0 +1,17 @@
+\section{Related Work}
+\label{sec:related}
+
+\para{The linear representation hypothesis.}
+The idea that neural networks encode high-level concepts as linear directions dates back to word embedding arithmetic \citep{park2023linear}. \citet{park2023linear} formalize the \emph{linear representation hypothesis} (LRH), proposing that concepts correspond to directions in activation space that can be identified via linear probes or difference-in-means. They introduce the \emph{causal inner product}, defined using the inverse covariance matrix, which provides a semantically meaningful metric over directions. The LRH has been empirically validated across a range of binary and multi-class concepts, motivating our search for an ``AI-sounding'' direction.
+
+\para{Linear directions for truth, refusal, and behavior.}
+\citet{marks2024geometry} demonstrate that truth and falsehood are linearly separable in the residual stream of LLaMA-2-13B, with a single difference-in-means direction achieving $>$95\% accuracy that generalizes across topically unrelated datasets. Crucially, they show that this direction is \emph{causally relevant}: interventions using it achieve normalized indirect effects up to 0.97, and mass-mean probing identifies more causally relevant directions than logistic regression. \citet{arditi2024refusal} extend this to refusal behavior, showing that a single direction mediates refusal across 13 chat models up to 72B parameters, and that orthogonalizing model weights against this direction permanently removes refusal while preserving general capabilities. \citet{panickssery2024steering} steer seven behavioral traits (sycophancy, hallucination, corrigibility, and others) via contrastive activation addition (\caa), establishing the methodology we build on.
+
+\para{Style as a linear feature.}
+\citet{konen2024style} show that sentiment, emotion, and writing style are linearly represented and can be steered via activation-based style vectors, achieving AUC scores of 0.98--0.99 for style classification. They find that style vectors carry domain bias---a Yelp-derived sentiment vector biases outputs toward food topics. \citet{lai2024style} take a complementary neuron-level approach, finding that style-specific neurons concentrate in the last 4--5 layers and show $\sim$95\% overlap between opposing styles. Both works suggest that style is linearly accessible in the residual stream, but neither investigates the specific composite style that characterizes AI-generated text.
+
+\para{Activation addition and representation engineering.}
+\citet{turner2023activation} introduce activation addition---adding the difference between contrastive prompt activations to the residual stream during generation---and show that it shifts model outputs along semantic dimensions. \citet{zou2023representation} propose representation engineering as a general framework for reading and controlling model behavior via activation-space interventions. Our work applies these techniques to the previously unstudied question of AI writing style.
+
+\para{Our position.}
+Prior work has established that truth, refusal, sentiment, and behavioral traits are linearly represented. We test whether ``AI-sounding''---arguably the most pervasive stylistic property of LLM outputs---follows the same pattern. Unlike prior work on clean binary concepts, we find that the AI direction is substantially confounded with a surface feature (text length), necessitating careful confound analysis that has been largely absent from the linear representations literature.
